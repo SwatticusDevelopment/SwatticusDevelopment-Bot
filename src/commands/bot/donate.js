@@ -4,8 +4,8 @@ module.exports = async (client, interaction, args) => {
     let row = new Discord.ActionRowBuilder()
         .addComponents(
             new Discord.ButtonBuilder()
-                .setLabel("SwatticusDev GitHub")
-                .setURL("https://github.com/sponsors/SwatticusDev")
+                .setLabel("SwatticusDevelopment GitHub")
+                .setURL("https://github.com/SwatticusDevelopment")
                 .setStyle(Discord.ButtonStyle.Link),
         );
 
@@ -13,7 +13,7 @@ module.exports = async (client, interaction, args) => {
         title: `${client.user.username}・Donate`,
         desc: '_____ \n\nClick the button below for the sponsor page \n**Pay attention! sponsor is not required**',
         thumbnail: client.user.avatarURL({ dynamic: true }),
-        url: "https://github.com/sponsors/SwatticusDev",
+        url: "https://github.com/SwatticusDevelopment",
         components: [row],
         type: 'editreply'
     }, interaction)

@@ -68,7 +68,7 @@ if (clientID && clientSecret) {
             {
                 host: process.env.LAVALINK_HOST || "lava.link",
                 port: parseInt(process.env.LAVALINK_PORT) || 80,
-                password: process.env.LAVALINK_PASSWORD || "SwatticusDev",
+                password: process.env.LAVALINK_PASSWORD || "$waT",
                 secure: Boolean(process.env.LAVALINK_SECURE) || false
             },
             {
@@ -95,7 +95,7 @@ if (clientID && clientSecret) {
             {
                 host: process.env.LAVALINK_HOST || "lava.link",
                 port: parseInt(process.env.LAVALINK_PORT) || 80,
-                password: process.env.LAVALINK_PASSWORD || "SwatticusDev",
+                password: process.env.LAVALINK_PASSWORD || "SwatticusDevelopment",
                 secure: Boolean(process.env.LAVALINK_SECURE) || false
             },
         ],
@@ -119,12 +119,31 @@ require("./database/connect")();
 client.config = require('./config/bot');
 client.changelogs = require('./config/changelogs');
 client.emotes = require("./config/emojis.json");
-
+client.webhooks = require("./config/webhooks.json");
+const webHooksArray = ['startLogs', 'shardLogs', 'errorLogs', 'dmLogs', 'voiceLogs', 'serverLogs', 'serverLogs2', 'commandLogs', 'consoleLogs', 'warnLogs', 'voiceErrorLogs', 'creditLogs', 'evalLogs', 'interactionLogs'];
+// Check if .env webhook_id and webhook_token are set
+if (process.env.WEBHOOK_ID && process.env.WEBHOOK_TOKEN) {
+    for (const webhookName of webHooksArray) {
+        client.webhooks[webhookName].id = process.env.WEBHOOK_ID;
+        client.webhooks[webhookName].token = process.env.WEBHOOK_TOKEN;
+    }
+}
 
 client.commands = new Discord.Collection();
 client.playerManager = new Map();
 client.triviaManager = new Map();
 client.queue = new Map();
+
+// Webhooks
+const consoleLogs = new Discord.WebhookClient({
+    id: client.webhooks.consoleLogs.id,
+    token: client.webhooks.consoleLogs.token,
+});
+
+const warnLogs = new Discord.WebhookClient({
+    id: client.webhooks.warnLogs.id,
+    token: client.webhooks.warnLogs.token,
+});
 
 // Load handlers
 fs.readdirSync('./src/handlers').forEach((dir) => {
