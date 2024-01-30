@@ -64,26 +64,15 @@ module.exports = async (client, guild) => {
             );
 
         client.embed({
-            title: "Thanks for inviting the bot!",
-            image: "https://cdn.discordapp.com/attachments/843487478881976381/874694194474668052/bot_banner_invite.jpg",
+            title: "SwatticusDevelopment Bot Created To Fuel Communities",
             fields: [{
-                name: "❓┆How to setup?",
-                value: 'The default prefix = \`/\` \nTo run setups with Bot run \`/setup\`',
+                name: "☎️┆ Support",
+                value: `There Is No Public Support For This Bot!`,
                 inline: false,
             },
             {
-                name: "☎️┆I need help what now?",
-                value: `You can DM <@755297485328482356> for support or joining the [[Support server]](${client.config.discord.serverInvite})`,
-                inline: false,
-            },
-            {
-                name: "💻┆What are the commands?",
-                value: 'See that list of commands by doing \`/help\`',
-                inline: false,
-            },
-            {
-                name: "📨┆Invite the bot!",
-                value: `Invite the bot to click [[HERE]](${client.config.discord.botInvite})`,
+                name: "💻┆ This Is An Ethical Hacker Project",
+                value: 'I work with many organizations, companies, and communities. This branch will test some network security. Aswell as it does way to many things...`',
                 inline: false,
             },
             ],
